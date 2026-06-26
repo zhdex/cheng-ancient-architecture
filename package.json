@@ -1,0 +1,12 @@
+{
+  "name": "cheng-ancient-architecture",
+  "version": "2.0.0",
+  "description": "承古建筑官网 — 26年中式四合院全流程服务商",
+  "scripts": {
+    "dev": "live-server",
+    "build": "echo 'Static site - no build needed'"
+  },
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  }
+}
