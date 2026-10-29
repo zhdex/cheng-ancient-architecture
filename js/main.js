@@ -104,9 +104,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 img.classList.add('loaded');
             });
             img.addEventListener('error', function () {
-                // 图片加载失败也显示（避免永远隐藏）
+                // 图片加载失败也显示（避免永远隐藏）；画廊备选图保持隐藏，防止盖住当前画面
                 img.classList.add('loaded');
-                img.style.opacity = '0.3';
+                if (!img.closest('.case-gallery')) {
+                    img.style.opacity = '0.3';
+                }
             });
         }
     }
@@ -178,6 +180,26 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
+    // ===== 案例多图按钮切换 =====
+    document.querySelectorAll('.case-gallery').forEach(function (card) {
+        var tabs = card.querySelector('.case-tabs');
+        if (!tabs) return;
+        tabs.addEventListener('click', function (e) {
+            var btn = e.target.closest('button');
+            if (!btn || btn.classList.contains('active')) return;
+            var btns = tabs.querySelectorAll('button');
+            var idx = Array.prototype.indexOf.call(btns, btn);
+            btns.forEach(function (b, i) {
+                b.classList.toggle('active', i === idx);
+                b.setAttribute('aria-pressed', i === idx ? 'true' : 'false');
+            });
+            var imgs = card.querySelectorAll('img');
+            imgs.forEach(function (img, i) {
+                img.classList.toggle('active', i === idx);
+            });
+        });
+    });
+
     // ===== GSAP 动效 =====
     var gsapLoaded = typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined';
 
@@ -236,6 +258,7 @@ document.addEventListener('DOMContentLoaded', function () {
             { sel: '.process-item', trigger: '.process-grid', from: { opacity: 0, y: 30 }, stagger: 0.1 },
             { sel: '.testi-card', trigger: '.testi-grid', from: { opacity: 0, y: 30 }, stagger: 0.1 },
             { sel: '.faq-item', trigger: '.faq-list', from: { opacity: 0, x: -20 }, stagger: 0.08 },
+            { sel: '.film-frame', trigger: '.film-frame', from: { opacity: 0, y: 40, scale: 0.98 }, stagger: 0.1 },
         ];
 
         scrollAnims.forEach(function (anim) {
@@ -307,7 +330,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // 给所有区块添加淡入效果
         var animateEls = document.querySelectorAll(
-            '.service-card, .case-card, .adv-item, .process-item, .testi-card, .faq-item, .highlight-card, .trust-item'
+            '.service-card, .case-card, .adv-item, .process-item, .testi-card, .faq-item, .highlight-card, .trust-item, .film-frame'
         );
         animateEls.forEach(function (el) {
             el.style.opacity = '0';

@@ -20,7 +20,7 @@
     <meta property="og:title" content="承古建筑 — 26年中式四合院全流程服务商">
     <meta property="og:description" content="从基础放线到内外装配套，一站式包工包料交付。26年经验、数千人团队、实地考察验证。">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="https://www.chenggujianzhu.com/images/hero-bg.jpg">
+    <meta property="og:image" content="https://www.chenggujianzhu.com/images/hero-courtyard.png">
     <meta property="og:locale" content="zh_CN">
     <meta property="og:site_name" content="承古建筑">
     <link rel="canonical" href="https://www.chenggujianzhu.com/">
@@ -134,6 +134,7 @@
                 <li><a href="#about">关于我们</a></li>
                 <li><a href="#services">业务体系</a></li>
                 <li><a href="#cases">案例展示</a></li>
+                <li><a href="#film">宣传片</a></li>
                 <li><a href="#advantages">核心优势</a></li>
                 <li><a href="#process">合作流程</a></li>
                 <li><a href="#faq">常见问题</a></li>
@@ -323,8 +324,15 @@
                             <p>三进院落布局，800平米，含正房、厢房、花园水景</p>
                         </div>
                     </div>
-                    <div class="case-card">
-                        <img src="images/case-湖南邵东贺府.jpg" alt="湖南邵东贺府中式合院" loading="lazy">
+                    <div class="case-card case-gallery">
+                        <img class="active" src="images/case-湖南邵东贺府.jpg" alt="湖南邵东贺府中式合院 · 鱼池庭院鸟瞰" loading="lazy">
+                        <img src="images/case-湖南邵东贺府-门楼.jpg" alt="湖南邵东贺府中式合院 · 门楼前场" loading="lazy">
+                        <img src="images/case-湖南邵东贺府-立面.jpg" alt="湖南邵东贺府中式合院 · 正立面" loading="lazy">
+                        <div class="case-tabs" role="group" aria-label="贺府视角切换">
+                            <button type="button" class="active" aria-pressed="true">庭院鸟瞰</button>
+                            <button type="button" aria-pressed="false">门楼前场</button>
+                            <button type="button" aria-pressed="false">正立面</button>
+                        </div>
                         <div class="case-overlay"></div>
                         <div class="case-info">
                             <div class="case-loc">湖南邵东</div>
@@ -332,8 +340,15 @@
                             <p>现代中式风格，融合传统元素与现代舒适生活</p>
                         </div>
                     </div>
-                    <div class="case-card">
-                        <img src="images/case-江西汪府.jpg" alt="江西汪府徽派合院" loading="lazy">
+                    <div class="case-card case-gallery">
+                        <img class="active" src="images/case-江西汪府.jpg" alt="江西汪府徽派合院 · 正面对称" loading="lazy">
+                        <img src="images/case-江西汪府-车道.jpg" alt="江西汪府徽派合院 · 沿车道一排" loading="lazy">
+                        <img src="images/case-江西汪府-月洞门.jpg" alt="江西汪府徽派合院 · 月洞门庭院" loading="lazy">
+                        <div class="case-tabs" role="group" aria-label="汪府视角切换">
+                            <button type="button" class="active" aria-pressed="true">正面</button>
+                            <button type="button" aria-pressed="false">车道</button>
+                            <button type="button" aria-pressed="false">月洞门</button>
+                        </div>
                         <div class="case-overlay"></div>
                         <div class="case-info">
                             <div class="case-loc">江西</div>
@@ -341,8 +356,13 @@
                             <p>徽派建筑风格，马头墙与天井的经典呈现</p>
                         </div>
                     </div>
-                    <div class="case-card">
-                        <img src="images/4望城梁府.png" alt="望城梁府新中式建筑" loading="lazy">
+                    <div class="case-card case-gallery">
+                        <img class="active" src="images/4望城梁府.jpg" alt="望城梁府新中式建筑 · 正门视角" loading="lazy">
+                        <img src="images/4望城梁府-鸟瞰.jpg" alt="望城梁府新中式建筑 · 鸟瞰全景" loading="lazy">
+                        <div class="case-tabs" role="group" aria-label="梁府视角切换">
+                            <button type="button" class="active" aria-pressed="true">正门</button>
+                            <button type="button" aria-pressed="false">鸟瞰</button>
+                        </div>
                         <div class="case-overlay"></div>
                         <div class="case-info">
                             <div class="case-loc">湖南望城</div>
@@ -353,6 +373,32 @@
                 </div>
             </div>
         </section>
+
+        <!-- ===== Film 宣传片 ===== -->
+        <!-- 视频就位后：删除 .film-center 与 .film-veil 两个装饰层，
+             将 <img> 换成 <video controls preload="metadata" poster="images/film-poster.jpg" src="images/film.mp4"></video> -->
+        <section class="section section-dark film-section" id="film">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">承古映像</span>
+                    <h2 class="section-title">宣传片 · 光影里的营造</h2>
+                    <p class="section-desc">从图纸放线到飞檐落瓦，用镜头记录一座四合院的诞生。品牌宣传片正在制作中，敬请期待。</p>
+                </div>
+                <div class="film-frame">
+                    <img src="images/case-庭院夜景.png" alt="宣传片预告画面：中式庭院夜景" loading="lazy">
+                    <div class="film-veil" aria-hidden="true"></div>
+                    <span class="film-badge">FILM · 即将上线</span>
+                    <div class="film-center" aria-hidden="true">
+                        <div class="film-play">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                        <p class="film-tip">宣传片即将上线 · 敬请期待</p>
+                    </div>
+                    <span class="film-meta" aria-hidden="true">承古映像 · 2026</span>
+                </div>
+            </div>
+        </section>
+
         <!-- ===== Advantages ===== -->
         <section class="section" id="advantages">
             <div class="container">
