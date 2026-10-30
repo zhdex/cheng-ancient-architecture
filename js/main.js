@@ -180,25 +180,34 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // ===== 案例多图按钮切换 =====
-    document.querySelectorAll('.case-gallery').forEach(function (card) {
-        var tabs = card.querySelector('.case-tabs');
-        if (!tabs) return;
-        tabs.addEventListener('click', function (e) {
-            var btn = e.target.closest('button');
-            if (!btn || btn.classList.contains('active')) return;
-            var btns = tabs.querySelectorAll('button');
-            var idx = Array.prototype.indexOf.call(btns, btn);
-            btns.forEach(function (b, i) {
-                b.classList.toggle('active', i === idx);
-                b.setAttribute('aria-pressed', i === idx ? 'true' : 'false');
-            });
-            var imgs = card.querySelectorAll('img');
-            imgs.forEach(function (img, i) {
-                img.classList.toggle('active', i === idx);
-            });
+    // ===== 案例多图按钮切换（document 级事件委托，免疫绑定时序与缓存差异） =====
+    document.addEventListener('click', function (e) {
+        var btn = e.target.closest('.case-tabs button');
+        if (!btn || btn.classList.contains('active')) return;
+        var tabs = btn.closest('.case-tabs');
+        var card = btn.closest('.case-card');
+        if (!tabs || !card) return;
+        var btns = tabs.querySelectorAll('button');
+        var idx = Array.prototype.indexOf.call(btns, btn);
+        btns.forEach(function (b, i) {
+            b.classList.toggle('active', i === idx);
+            b.setAttribute('aria-pressed', i === idx ? 'true' : 'false');
+        });
+        var imgs = card.querySelectorAll('img');
+        imgs.forEach(function (img, i) {
+            img.classList.toggle('active', i === idx);
         });
     });
+
+    // 悬停/触摸到画廊卡片时，立即解除懒加载，把备用视角图提前拉下来
+    document.addEventListener('pointerover', function (e) {
+        var card = e.target.closest('.case-gallery');
+        if (!card || card.dataset.eager) return;
+        card.dataset.eager = '1';
+        card.querySelectorAll('img[loading]').forEach(function (img) {
+            img.loading = 'eager';
+        });
+    }, { passive: true });
 
     // ===== GSAP 动效 =====
     var gsapLoaded = typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined';
