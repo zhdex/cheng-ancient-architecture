@@ -209,6 +209,119 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }, { passive: true });
 
+    // ===== 设计方案库 · 图集灯箱 =====
+    var SCHEME_DATA = {
+        '河池刘府': { title: '河池刘府', sub: '广西河池 · 江南中式 · 三进院落 800㎡', count: 6 },
+        '邵东贺府': { title: '邵东贺府', sub: '湖南邵东 · 现代中式 · 鱼池庭院', count: 6 },
+        '江西汪府': { title: '江西汪府', sub: '江西 · 徽派马头墙 · 天井院落', count: 8 },
+        '望城梁府': { title: '望城梁府', sub: '湖南望城 · 新中式 · 多层合院', count: 8 },
+        '四川李府': { title: '四川李府', sub: '四川 · 新中式合院 · 双进院落', count: 8 },
+        '浏阳王院': { title: '浏阳王院', sub: '湖南浏阳 · 苏式雅院 · 内廊合院', count: 8 },
+        '萍乡黎府': { title: '萍乡黎府', sub: '江西萍乡 · 苏式合院 · 庭院水景', count: 8 }
+    };
+
+    function schemeImgs(key, count) {
+        var base = 'images/方案/' + key + '/';
+        var list = [base + 'cover.jpg'];
+        for (var i = 1; i < count; i++) {
+            list.push(base + (i < 10 ? '0' + i : i) + '.jpg');
+        }
+        return list;
+    }
+
+    (function () {
+        var lb = document.getElementById('lightbox');
+        if (!lb) return;
+        var imgEl = document.getElementById('lightboxImg');
+        var titleEl = document.getElementById('lightboxTitle');
+        var subEl = document.getElementById('lightboxSub');
+        var counterEl = document.getElementById('lightboxCounter');
+        var thumbsEl = document.getElementById('lightboxThumbs');
+        var imgs = [];
+        var idx = 0;
+
+        function preloadNear() {
+            if (imgs.length < 2) return;
+            var next = (idx + 1) % imgs.length;
+            var p = new Image();
+            p.src = imgs[next];
+        }
+
+        function render() {
+            imgEl.src = imgs[idx];
+            imgEl.alt = titleEl.textContent + ' · 方案图 ' + (idx + 1);
+            counterEl.textContent = (idx + 1) + ' / ' + imgs.length;
+            var btns = thumbsEl.querySelectorAll('button');
+            for (var i = 0; i < btns.length; i++) {
+                btns[i].classList.toggle('is-active', i === idx);
+            }
+            preloadNear();
+        }
+
+        function open(key) {
+            var data = SCHEME_DATA[key];
+            if (!data) return;
+            imgs = schemeImgs(key, data.count);
+            idx = 0;
+            titleEl.textContent = data.title;
+            subEl.textContent = data.sub;
+            thumbsEl.innerHTML = '';
+            imgs.forEach(function (src, i) {
+                var b = document.createElement('button');
+                b.type = 'button';
+                b.setAttribute('data-thumb', String(i));
+                b.setAttribute('aria-label', '第 ' + (i + 1) + ' 张');
+                var t = document.createElement('img');
+                t.src = src;
+                t.alt = '';
+                t.loading = 'lazy';
+                b.appendChild(t);
+                thumbsEl.appendChild(b);
+            });
+            lb.hidden = false;
+            document.body.classList.add('lightbox-open');
+            render();
+            var closeBtn = lb.querySelector('.lightbox-close');
+            if (closeBtn) closeBtn.focus();
+        }
+
+        function close() {
+            lb.hidden = true;
+            document.body.classList.remove('lightbox-open');
+            imgs = [];
+        }
+
+        function step(dir) {
+            if (!imgs.length) return;
+            idx = (idx + dir + imgs.length) % imgs.length;
+            render();
+        }
+
+        document.addEventListener('click', function (e) {
+            var card = e.target.closest('[data-scheme]');
+            if (card) {
+                open(card.getAttribute('data-scheme'));
+                return;
+            }
+            if (lb.hidden) return;
+            if (e.target.closest('[data-lb-close]')) { close(); return; }
+            if (e.target.closest('[data-lb-prev]')) { step(-1); return; }
+            if (e.target.closest('[data-lb-next]')) { step(1); return; }
+            var th = e.target.closest('[data-thumb]');
+            if (th) {
+                idx = parseInt(th.getAttribute('data-thumb'), 10) || 0;
+                render();
+            }
+        });
+
+        document.addEventListener('keydown', function (e) {
+            if (lb.hidden) return;
+            if (e.key === 'Escape') { close(); return; }
+            if (e.key === 'ArrowLeft') { step(-1); return; }
+            if (e.key === 'ArrowRight') { step(1); }
+        });
+    })();
+
     // ===== GSAP 动效 =====
     var gsapLoaded = typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined';
 
@@ -263,6 +376,7 @@ document.addEventListener('DOMContentLoaded', function () {
             { sel: '.highlight-card', trigger: '.about-highlights', from: { opacity: 0, scale: 0.9 }, stagger: 0.1, ease: 'back.out(1.7)' },
             { sel: '.service-card', trigger: '.services-grid', from: { opacity: 0, y: 40 }, stagger: 0.08 },
             { sel: '.case-card', trigger: '.cases-grid', from: { opacity: 0, y: 40, scale: 0.97 }, stagger: 0.12 },
+            { sel: '.scheme-card', trigger: '.schemes-grid', from: { opacity: 0, y: 40, scale: 0.97 }, stagger: 0.06 },
             { sel: '.adv-item', trigger: '.adv-grid', from: { opacity: 0, y: 30 }, stagger: 0.08 },
             { sel: '.process-item', trigger: '.process-grid', from: { opacity: 0, y: 30 }, stagger: 0.1 },
             { sel: '.testi-card', trigger: '.testi-grid', from: { opacity: 0, y: 30 }, stagger: 0.1 },
@@ -339,7 +453,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // 给所有区块添加淡入效果
         var animateEls = document.querySelectorAll(
-            '.service-card, .case-card, .adv-item, .process-item, .testi-card, .faq-item, .highlight-card, .trust-item, .film-frame'
+            '.service-card, .case-card, .scheme-card, .adv-item, .process-item, .testi-card, .faq-item, .highlight-card, .trust-item, .film-frame'
         );
         animateEls.forEach(function (el) {
             el.style.opacity = '0';

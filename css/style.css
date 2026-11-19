@@ -2359,3 +2359,413 @@ img.loaded {
         font-size: 10px;
     }
 }
+
+/* ===== 案例信息条 ===== */
+.case-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 10px;
+}
+
+.case-meta span {
+    font-size: 11px;
+    line-height: 1.6;
+    letter-spacing: 0.5px;
+    color: rgba(250, 249, 246, 0.78);
+    padding: 2px 8px;
+    border: 1px solid rgba(250, 249, 246, 0.2);
+    border-radius: 3px;
+    background: rgba(12, 10, 9, 0.28);
+}
+
+/* ===== 设计方案库 ===== */
+.schemes-section {
+    background: var(--paper-warm);
+}
+
+.schemes-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}
+
+.scheme-card {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    min-width: 0;
+    appearance: none;
+    -webkit-appearance: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font-family: inherit;
+    text-align: left;
+    background: var(--paper);
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 1px 2px rgba(12, 10, 9, 0.06);
+    transition: transform 0.5s var(--ease-out), box-shadow 0.5s var(--ease-out);
+}
+
+.scheme-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 42px rgba(12, 10, 9, 0.14);
+}
+
+.scheme-card:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
+}
+
+.scheme-media {
+    position: relative;
+    display: block;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    background: var(--ink-warm);
+}
+
+.scheme-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.9s var(--ease-out);
+}
+
+.scheme-card:hover .scheme-media img {
+    transform: scale(1.05);
+}
+
+.scheme-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    padding: 3px 10px;
+    border-radius: 4px;
+    color: var(--paper);
+    background: rgba(12, 10, 9, 0.62);
+    border: 1px solid rgba(250, 249, 246, 0.22);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.scheme-badge-design {
+    color: var(--gold-light);
+}
+
+.scheme-badge-live {
+    color: var(--paper);
+    background: var(--gold);
+    border-color: var(--gold);
+}
+
+.scheme-body {
+    display: block;
+    padding: 14px 16px 16px;
+}
+
+.scheme-title {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--ink);
+    letter-spacing: 0.3px;
+}
+
+.scheme-loc {
+    display: block;
+    font-size: 12px;
+    color: var(--stone);
+    margin-top: 3px;
+    letter-spacing: 0.5px;
+}
+
+.scheme-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 10px;
+}
+
+.scheme-tags span {
+    font-size: 11px;
+    color: var(--gold-dark);
+    background: rgba(176, 141, 87, 0.1);
+    padding: 2px 8px;
+    border-radius: 3px;
+    letter-spacing: 0.5px;
+}
+
+.scheme-foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 12px;
+    font-size: 12px;
+    color: var(--stone);
+}
+
+.scheme-arrow {
+    color: var(--gold);
+    transition: transform 0.3s var(--ease-out);
+}
+
+.scheme-card:hover .scheme-arrow {
+    transform: translateX(4px);
+}
+
+.schemes-note {
+    margin-top: 28px;
+    font-size: 12px;
+    color: var(--mist);
+    text-align: center;
+    letter-spacing: 0.5px;
+}
+
+/* ===== 方案图集灯箱 ===== */
+.lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+}
+
+.lightbox[hidden] {
+    display: none;
+}
+
+.lightbox-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(8, 7, 6, 0.94);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.lightbox-panel {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: min(1120px, 100%);
+    max-height: 92vh;
+    background: #141110;
+    border: 1px solid rgba(250, 249, 246, 0.08);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.6);
+}
+
+.lightbox-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 16px 20px;
+    border-bottom: 1px solid rgba(250, 249, 246, 0.06);
+}
+
+.lightbox-title {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--paper);
+    letter-spacing: 0.5px;
+}
+
+.lightbox-sub {
+    margin-top: 3px;
+    font-size: 12px;
+    color: rgba(250, 249, 246, 0.5);
+    letter-spacing: 0.5px;
+}
+
+.lightbox-close {
+    flex: 0 0 auto;
+    width: 36px;
+    height: 36px;
+    border: none;
+    border-radius: 6px;
+    background: none;
+    color: rgba(250, 249, 246, 0.7);
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s;
+}
+
+.lightbox-close:hover {
+    color: var(--paper);
+    background: rgba(250, 249, 246, 0.08);
+}
+
+.lightbox-close:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 2px;
+}
+
+.lightbox-stage {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 0;
+    flex: 1;
+    background: #0b0a09;
+}
+
+.lightbox-img {
+    display: block;
+    max-width: 100%;
+    max-height: 64vh;
+    object-fit: contain;
+}
+
+.lightbox-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid rgba(250, 249, 246, 0.18);
+    background: rgba(12, 10, 9, 0.55);
+    color: var(--paper);
+    font-size: 22px;
+    line-height: 1;
+    cursor: pointer;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    transition: background 0.3s, border-color 0.3s;
+}
+
+.lightbox-nav:hover {
+    background: var(--gold);
+    border-color: var(--gold);
+}
+
+.lightbox-prev {
+    left: 14px;
+}
+
+.lightbox-next {
+    right: 14px;
+}
+
+.lightbox-foot {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 12px 20px;
+    border-top: 1px solid rgba(250, 249, 246, 0.06);
+}
+
+.lightbox-counter {
+    flex: 0 0 auto;
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: rgba(250, 249, 246, 0.6);
+}
+
+.lightbox-thumbs {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding: 2px;
+    scrollbar-width: thin;
+}
+
+.lightbox-thumbs button {
+    flex: 0 0 auto;
+    width: 64px;
+    height: 44px;
+    padding: 0;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    overflow: hidden;
+    background: none;
+    cursor: pointer;
+    opacity: 0.45;
+    transition: opacity 0.25s, border-color 0.25s;
+}
+
+.lightbox-thumbs button.is-active {
+    opacity: 1;
+    border-color: var(--gold);
+}
+
+.lightbox-thumbs img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+body.lightbox-open {
+    overflow: hidden;
+}
+
+@media (max-width: 1024px) {
+    .schemes-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .schemes-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .scheme-body {
+        padding: 12px 13px 14px;
+    }
+
+    .scheme-title {
+        font-size: 16px;
+    }
+
+    .lightbox {
+        padding: 0;
+    }
+
+    .lightbox-panel {
+        width: 100%;
+        max-height: 100vh;
+        border-radius: 0;
+        border: none;
+    }
+
+    .lightbox-img {
+        max-height: 56vh;
+    }
+
+    .lightbox-nav {
+        width: 38px;
+        height: 38px;
+        font-size: 18px;
+    }
+
+    .lightbox-thumbs button {
+        width: 52px;
+        height: 36px;
+    }
+}
+
+@media (max-width: 480px) {
+    .schemes-grid {
+        grid-template-columns: 1fr;
+    }
+}
