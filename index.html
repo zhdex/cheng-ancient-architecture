@@ -43,7 +43,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
 
     <!-- Styles -->
-    <link rel="stylesheet" href="css/style.css?v=20261119">
+    <link rel="stylesheet" href="css/style.css?v=20261119c">
 
     <!-- Schema.org -->
     <script type="application/ld+json">
@@ -134,7 +134,6 @@
                 <li><a href="#about">关于我们</a></li>
                 <li><a href="#services">业务体系</a></li>
                 <li><a href="#cases">案例展示</a></li>
-                <li><a href="#schemes">设计方案</a></li>
                 <li><a href="#film">宣传片</a></li>
                 <li><a href="#advantages">核心优势</a></li>
                 <li><a href="#process">合作流程</a></li>
@@ -303,7 +302,7 @@
                 <div class="section-header">
                     <span class="section-tag">案例展示</span>
                     <h2 class="section-title">经典项目案例</h2>
-                    <p class="section-desc">每一个项目都是匠心与品质的见证</p>
+                    <p class="section-desc">七个项目的建筑与景观方案，点击任意卡片查看完整图集</p>
                 </div>
                 <div class="cases-grid">
                     <div class="case-card featured">
@@ -316,165 +315,89 @@
                             <div class="case-meta"><span>月洞门</span><span>廊道水景</span><span>灯光营造</span></div>
                         </div>
                     </div>
-                    <div class="case-card">
-                        <img src="images/case-广西河池刘府.jpg" alt="广西河池刘府中式四合院" loading="lazy">
+                    <button type="button" class="case-card case-open" data-scheme="河池刘府" aria-label="查看河池刘府方案图集，共 6 张">
+                        <img src="images/方案/刘府/cover.jpg" alt="广西河池刘府 · 庭院鸟瞰效果图" loading="lazy" decoding="async">
                         <span class="case-tag">精品推荐</span>
-                        <div class="case-overlay"></div>
-                        <div class="case-info">
-                            <div class="case-loc">广西河池</div>
-                            <h3>刘府中式四合院</h3>
-                            <p>三进院落布局，800平米，含正房、厢房、花园水景</p>
-                            <div class="case-meta"><span>三进院落</span><span>800㎡</span><span>花园水景</span></div>
-                        </div>
-                    </div>
-                    <div class="case-card case-gallery">
-                        <img class="active" src="images/case-湖南邵东贺府.jpg" alt="湖南邵东贺府中式合院 · 鱼池庭院鸟瞰" loading="lazy" decoding="async">
-                        <img src="images/case-湖南邵东贺府-门楼.jpg" alt="湖南邵东贺府中式合院 · 门楼前场" loading="lazy" decoding="async">
-                        <img src="images/case-湖南邵东贺府-立面.jpg" alt="湖南邵东贺府中式合院 · 正立面" loading="lazy" decoding="async">
-                        <div class="case-tabs" role="group" aria-label="贺府视角切换">
-                            <button type="button" class="active" aria-pressed="true">庭院鸟瞰</button>
-                            <button type="button" aria-pressed="false">门楼前场</button>
-                            <button type="button" aria-pressed="false">正立面</button>
-                        </div>
-                        <div class="case-overlay"></div>
-                        <div class="case-info">
-                            <div class="case-loc">湖南邵东</div>
-                            <h3>贺府中式合院</h3>
-                            <p>现代中式风格，融合传统元素与现代舒适生活</p>
-                            <div class="case-meta"><span>现代中式</span><span>鱼池庭院</span><span>门楼前场</span></div>
-                        </div>
-                    </div>
-                    <div class="case-card case-gallery">
-                        <img class="active" src="images/case-江西汪府.jpg" alt="江西汪府徽派合院 · 正面对称" loading="lazy" decoding="async">
-                        <img src="images/case-江西汪府-车道.jpg" alt="江西汪府徽派合院 · 沿车道一排" loading="lazy" decoding="async">
-                        <img src="images/case-江西汪府-月洞门.jpg" alt="江西汪府徽派合院 · 月洞门庭院" loading="lazy" decoding="async">
-                        <div class="case-tabs" role="group" aria-label="汪府视角切换">
-                            <button type="button" class="active" aria-pressed="true">正面</button>
-                            <button type="button" aria-pressed="false">车道</button>
-                            <button type="button" aria-pressed="false">月洞门</button>
-                        </div>
-                        <div class="case-overlay"></div>
-                        <div class="case-info">
-                            <div class="case-loc">江西</div>
-                            <h3>汪府合院</h3>
-                            <p>徽派建筑风格，马头墙与天井的经典呈现</p>
-                            <div class="case-meta"><span>徽派风格</span><span>马头墙</span><span>天井院落</span></div>
-                        </div>
-                    </div>
-                    <div class="case-card case-gallery">
-                        <img class="active" src="images/4望城梁府.jpg" alt="望城梁府新中式建筑 · 正门视角" loading="lazy" decoding="async">
-                        <img src="images/4望城梁府-鸟瞰.jpg" alt="望城梁府新中式建筑 · 鸟瞰全景" loading="lazy" decoding="async">
-                        <div class="case-tabs" role="group" aria-label="梁府视角切换">
-                            <button type="button" class="active" aria-pressed="true">正门</button>
-                            <button type="button" aria-pressed="false">鸟瞰</button>
-                        </div>
-                        <div class="case-overlay"></div>
-                        <div class="case-info">
-                            <div class="case-loc">湖南望城</div>
-                            <h3>梁府建筑设计</h3>
-                            <p>新中式风格，传统与现代的完美融合</p>
-                            <div class="case-meta"><span>新中式</span><span>多层合院</span><span>大挑檐</span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ===== 设计方案库 ===== -->
-        <section class="section schemes-section" id="schemes">
-            <div class="container">
-                <div class="section-header">
-                    <span class="section-tag">设计方案</span>
-                    <h2 class="section-title">从图纸到院落</h2>
-                    <p class="section-desc">七个项目的完整设计方案：鸟瞰全景、正立面、内院廊道与景观细节。点击卡片查看方案图集</p>
-                </div>
-                <div class="schemes-grid">
-                    <button type="button" class="scheme-card" data-scheme="河池刘府" aria-label="查看河池刘府设计方案图集，共 6 张">
-                        <span class="scheme-media">
-                            <img src="images/方案/刘府/cover.jpg" alt="广西河池刘府建筑景观方案 · 庭院鸟瞰效果图" loading="lazy" decoding="async">
-                            <span class="scheme-badge scheme-badge-built">已建成项目</span>
-                        </span>
-                        <span class="scheme-body">
-                            <span class="scheme-title">河池刘府</span>
-                            <span class="scheme-loc">广西河池 · 江南中式</span>
-                            <span class="scheme-tags"><span>三进院落</span><span>800㎡</span></span>
-                            <span class="scheme-foot">6 张方案图 <span class="scheme-arrow" aria-hidden="true">→</span></span>
+                        <span class="case-overlay"></span>
+                        <span class="case-info">
+                            <span class="case-loc">广西河池</span>
+                            <span class="case-title">刘府中式四合院</span>
+                            <span class="case-desc">三进院落布局，800平米，含正房、厢房、花园水景</span>
+                            <span class="case-meta"><span>三进院落</span><span>800㎡</span><span>花园水景</span></span>
+                            <span class="case-hint">查看 6 张图集 <span aria-hidden="true">→</span></span>
                         </span>
                     </button>
-                    <button type="button" class="scheme-card" data-scheme="邵东贺府" aria-label="查看邵东贺府设计方案图集，共 6 张">
-                        <span class="scheme-media">
-                            <img src="images/方案/贺府/cover.jpg" alt="湖南邵东贺府中式合院方案 · 正门效果图" loading="lazy" decoding="async">
-                            <span class="scheme-badge scheme-badge-built">已建成项目</span>
-                        </span>
-                        <span class="scheme-body">
-                            <span class="scheme-title">邵东贺府</span>
-                            <span class="scheme-loc">湖南邵东 · 现代中式</span>
-                            <span class="scheme-tags"><span>鱼池庭院</span><span>门楼前场</span></span>
-                            <span class="scheme-foot">6 张方案图 <span class="scheme-arrow" aria-hidden="true">→</span></span>
-                        </span>
-                    </button>
-                    <button type="button" class="scheme-card" data-scheme="江西汪府" aria-label="查看江西汪府设计方案图集，共 8 张">
-                        <span class="scheme-media">
-                            <img src="images/方案/汪府/cover.jpg" alt="江西汪府徽派合院方案 · 正立面效果图" loading="lazy" decoding="async">
-                            <span class="scheme-badge scheme-badge-built">已建成项目</span>
-                        </span>
-                        <span class="scheme-body">
-                            <span class="scheme-title">江西汪府</span>
-                            <span class="scheme-loc">江西 · 徽派马头墙</span>
-                            <span class="scheme-tags"><span>天井院落</span><span>车道景观</span></span>
-                            <span class="scheme-foot">8 张方案图 <span class="scheme-arrow" aria-hidden="true">→</span></span>
+                    <button type="button" class="case-card case-open" data-scheme="邵东贺府" aria-label="查看邵东贺府方案图集，共 8 张">
+                        <img src="images/方案/贺府/cover.jpg" alt="湖南邵东贺府 · 正门效果图" loading="lazy" decoding="async">
+                        <span class="case-overlay"></span>
+                        <span class="case-info">
+                            <span class="case-loc">湖南邵东</span>
+                            <span class="case-title">贺府中式合院</span>
+                            <span class="case-desc">现代中式风格，融合传统元素与现代舒适生活</span>
+                            <span class="case-meta"><span>现代中式</span><span>鱼池庭院</span><span>门楼前场</span></span>
+                            <span class="case-hint">查看 8 张图集 <span aria-hidden="true">→</span></span>
                         </span>
                     </button>
-                    <button type="button" class="scheme-card" data-scheme="望城梁府" aria-label="查看望城梁府设计方案图集，共 8 张">
-                        <span class="scheme-media">
-                            <img src="images/方案/梁府/cover.jpg" alt="湖南望城梁府新中式建筑方案 · 整体鸟瞰效果图" loading="lazy" decoding="async">
-                            <span class="scheme-badge scheme-badge-design">设计方案</span>
-                        </span>
-                        <span class="scheme-body">
-                            <span class="scheme-title">望城梁府</span>
-                            <span class="scheme-loc">湖南望城 · 新中式</span>
-                            <span class="scheme-tags"><span>多层合院</span><span>大挑檐</span></span>
-                            <span class="scheme-foot">8 张方案图 <span class="scheme-arrow" aria-hidden="true">→</span></span>
-                        </span>
-                    </button>
-                    <button type="button" class="scheme-card" data-scheme="四川李府" aria-label="查看四川李府设计方案图集，共 8 张">
-                        <span class="scheme-media">
-                            <img src="images/方案/四川李府/cover.jpg" alt="四川李府新中式合院方案 · 正门效果图" loading="lazy" decoding="async">
-                            <span class="scheme-badge scheme-badge-live">在建设计方案</span>
-                        </span>
-                        <span class="scheme-body">
-                            <span class="scheme-title">四川李府</span>
-                            <span class="scheme-loc">四川 · 新中式合院</span>
-                            <span class="scheme-tags"><span>双进院落</span><span>白墙黛瓦</span></span>
-                            <span class="scheme-foot">8 张方案图 <span class="scheme-arrow" aria-hidden="true">→</span></span>
+                    <button type="button" class="case-card case-open" data-scheme="江西汪府" aria-label="查看江西汪府方案图集，共 10 张">
+                        <img src="images/方案/汪府/cover.jpg" alt="江西汪府 · 正立面效果图" loading="lazy" decoding="async">
+                        <span class="case-overlay"></span>
+                        <span class="case-info">
+                            <span class="case-loc">江西</span>
+                            <span class="case-title">汪府合院</span>
+                            <span class="case-desc">徽派建筑风格，马头墙与天井的经典呈现</span>
+                            <span class="case-meta"><span>徽派风格</span><span>马头墙</span><span>天井院落</span></span>
+                            <span class="case-hint">查看 10 张图集 <span aria-hidden="true">→</span></span>
                         </span>
                     </button>
-                    <button type="button" class="scheme-card" data-scheme="浏阳王院" aria-label="查看浏阳王院设计方案图集，共 8 张">
-                        <span class="scheme-media">
-                            <img src="images/方案/浏阳王院/cover.jpg" alt="湖南浏阳王院苏式雅院方案 · 内院效果图" loading="lazy" decoding="async">
-                            <span class="scheme-badge scheme-badge-live">在建设计方案</span>
-                        </span>
-                        <span class="scheme-body">
-                            <span class="scheme-title">浏阳王院</span>
-                            <span class="scheme-loc">湖南浏阳 · 苏式雅院</span>
-                            <span class="scheme-tags"><span>内廊合院</span><span>精致木作</span></span>
-                            <span class="scheme-foot">8 张方案图 <span class="scheme-arrow" aria-hidden="true">→</span></span>
+                    <button type="button" class="case-card case-open" data-scheme="望城梁府" aria-label="查看望城梁府方案图集，共 9 张">
+                        <img src="images/方案/梁府/cover.jpg" alt="湖南望城梁府 · 整体鸟瞰效果图" loading="lazy" decoding="async">
+                        <span class="case-overlay"></span>
+                        <span class="case-info">
+                            <span class="case-loc">湖南望城</span>
+                            <span class="case-title">梁府建筑设计</span>
+                            <span class="case-desc">新中式风格，传统与现代的完美融合</span>
+                            <span class="case-meta"><span>新中式</span><span>多层合院</span><span>大挑檐</span></span>
+                            <span class="case-hint">查看 9 张图集 <span aria-hidden="true">→</span></span>
                         </span>
                     </button>
-                    <button type="button" class="scheme-card" data-scheme="萍乡黎府" aria-label="查看萍乡黎府设计方案图集，共 8 张">
-                        <span class="scheme-media">
-                            <img src="images/方案/萍乡黎府/cover.jpg" alt="江西萍乡黎府苏式合院方案 · 正门效果图" loading="lazy" decoding="async">
-                            <span class="scheme-badge scheme-badge-live">在建设计方案</span>
+                    <button type="button" class="case-card case-open" data-scheme="四川李府" aria-label="查看四川李府方案图集，共 8 张">
+                        <img src="images/方案/四川李府/cover.jpg" alt="四川李府 · 正门效果图" loading="lazy" decoding="async">
+                        <span class="scheme-badge scheme-badge-live">在建设计方案</span>
+                        <span class="case-overlay"></span>
+                        <span class="case-info">
+                            <span class="case-loc">四川</span>
+                            <span class="case-title">四川李府</span>
+                            <span class="case-desc">新中式合院，双进院落与白墙黛瓦</span>
+                            <span class="case-meta"><span>新中式</span><span>双进院落</span><span>白墙黛瓦</span></span>
+                            <span class="case-hint">查看 8 张图集 <span aria-hidden="true">→</span></span>
                         </span>
-                        <span class="scheme-body">
-                            <span class="scheme-title">萍乡黎府</span>
-                            <span class="scheme-loc">江西萍乡 · 苏式合院</span>
-                            <span class="scheme-tags"><span>庭院水景</span><span>门楼</span></span>
-                            <span class="scheme-foot">8 张方案图 <span class="scheme-arrow" aria-hidden="true">→</span></span>
+                    </button>
+                    <button type="button" class="case-card case-open" data-scheme="浏阳王院" aria-label="查看浏阳王院方案图集，共 8 张">
+                        <img src="images/方案/浏阳王院/cover.jpg" alt="湖南浏阳王院 · 内院效果图" loading="lazy" decoding="async">
+                        <span class="scheme-badge scheme-badge-live">在建设计方案</span>
+                        <span class="case-overlay"></span>
+                        <span class="case-info">
+                            <span class="case-loc">湖南浏阳</span>
+                            <span class="case-title">浏阳王院</span>
+                            <span class="case-desc">苏式雅院，内廊合院与精致木作</span>
+                            <span class="case-meta"><span>苏式雅院</span><span>内廊合院</span><span>精致木作</span></span>
+                            <span class="case-hint">查看 8 张图集 <span aria-hidden="true">→</span></span>
+                        </span>
+                    </button>
+                    <button type="button" class="case-card case-open" data-scheme="萍乡黎府" aria-label="查看萍乡黎府方案图集，共 8 张">
+                        <img src="images/方案/萍乡黎府/cover.jpg" alt="江西萍乡黎府 · 正门效果图" loading="lazy" decoding="async">
+                        <span class="scheme-badge scheme-badge-live">在建设计方案</span>
+                        <span class="case-overlay"></span>
+                        <span class="case-info">
+                            <span class="case-loc">江西萍乡</span>
+                            <span class="case-title">萍乡黎府</span>
+                            <span class="case-desc">苏式合院，庭院水景与宋式门楼</span>
+                            <span class="case-meta"><span>苏式合院</span><span>庭院水景</span><span>门楼</span></span>
+                            <span class="case-hint">查看 8 张图集 <span aria-hidden="true">→</span></span>
                         </span>
                     </button>
                 </div>
-                <p class="schemes-note">以上方案均由承古设计团队原创绘制，图为建筑与景观效果呈现，实景以竣工交付为准。</p>
+                <p class="cases-note">以上方案均由承古设计团队原创绘制，图为建筑与景观效果呈现，实景以竣工交付为准。</p>
             </div>
         </section>
 
@@ -738,6 +661,6 @@
 
     <script src="js/three-bg.js"></script>
     <script src="js/falling-leaves.js"></script>
-    <script src="js/main.js?v=20261119"></script>
+    <script src="js/main.js?v=20261119c"></script>
 </body>
 </html>

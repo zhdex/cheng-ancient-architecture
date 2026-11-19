@@ -909,12 +909,22 @@ body {
 .case-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(transparent 40%, rgba(12, 10, 9, 0.8));
+    background: linear-gradient(
+        180deg,
+        rgba(12, 10, 9, 0) 30%,
+        rgba(12, 10, 9, 0.35) 52%,
+        rgba(12, 10, 9, 0.82) 100%
+    );
     transition: background 0.4s;
 }
 
 .case-card:hover .case-overlay {
-    background: linear-gradient(transparent 20%, rgba(12, 10, 9, 0.85));
+    background: linear-gradient(
+        180deg,
+        rgba(12, 10, 9, 0) 22%,
+        rgba(12, 10, 9, 0.42) 48%,
+        rgba(12, 10, 9, 0.88) 100%
+    );
 }
 
 .case-info {
@@ -961,54 +971,6 @@ body {
     border-radius: 4px;
     letter-spacing: 0.5px;
     z-index: 3;
-}
-
-/* ===== 案例多图按钮切换 ===== */
-.case-card.case-gallery img {
-    position: absolute;
-    inset: 0;
-    opacity: 0;
-    transition: opacity 0.6s var(--ease-out), transform 0.8s var(--ease-out);
-}
-
-.case-card.case-gallery img.active {
-    opacity: 1;
-}
-
-.case-tabs {
-    position: absolute;
-    top: 16px;
-    right: 16px;
-    display: flex;
-    gap: 8px;
-    z-index: 3;
-}
-
-.case-tabs button {
-    font-family: inherit;
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: 1px;
-    color: rgba(250, 249, 246, 0.8);
-    background: rgba(12, 10, 9, 0.45);
-    border: 1px solid rgba(250, 249, 246, 0.28);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
-    padding: 5px 14px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: all 0.3s var(--ease-out);
-}
-
-.case-tabs button:hover {
-    color: var(--paper);
-    border-color: rgba(250, 249, 246, 0.6);
-}
-
-.case-tabs button.active {
-    background: var(--gold);
-    border-color: var(--gold);
-    color: var(--paper);
 }
 
 /* ===== Stats Section ===== */
@@ -2360,6 +2322,64 @@ img.loaded {
     }
 }
 
+/* ===== 案例卡（点开看图集） ===== */
+.case-card.case-open {
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: 0;
+    background: none;
+    font: inherit;
+    color: inherit;
+    text-align: left;
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.case-card.case-open:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
+}
+
+.case-card.case-open .case-loc,
+.case-card.case-open .case-title,
+.case-card.case-open .case-desc,
+.case-card.case-open .case-hint {
+    display: block;
+}
+
+.case-title {
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--paper);
+    margin-bottom: 4px;
+    letter-spacing: 0.3px;
+}
+
+.case-desc {
+    font-size: 13px;
+    color: rgba(250, 249, 246, 0.72);
+    line-height: 1.5;
+}
+
+.case-hint {
+    margin-top: 10px;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    color: var(--gold-light);
+}
+
+.case-hint span {
+    display: inline-block;
+    transition: transform 0.3s var(--ease-out);
+}
+
+.case-card.case-open:hover .case-hint span {
+    transform: translateX(4px);
+}
+
 /* ===== 案例信息条 ===== */
 .case-meta {
     display: flex;
@@ -2379,70 +2399,20 @@ img.loaded {
     background: rgba(12, 10, 9, 0.28);
 }
 
-/* ===== 设计方案库 ===== */
-.schemes-section {
-    background: var(--paper-warm);
+.cases-note {
+    margin-top: 28px;
+    font-size: 12px;
+    color: var(--stone);
+    text-align: center;
+    letter-spacing: 0.5px;
 }
 
-.schemes-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
-}
-
-.scheme-card {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    min-width: 0;
-    appearance: none;
-    -webkit-appearance: none;
-    border: none;
-    padding: 0;
-    margin: 0;
-    font-family: inherit;
-    text-align: left;
-    background: var(--paper);
-    border-radius: 8px;
-    overflow: hidden;
-    cursor: pointer;
-    box-shadow: 0 1px 2px rgba(12, 10, 9, 0.06);
-    transition: transform 0.5s var(--ease-out), box-shadow 0.5s var(--ease-out);
-}
-
-.scheme-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 18px 42px rgba(12, 10, 9, 0.14);
-}
-
-.scheme-card:focus-visible {
-    outline: 2px solid var(--gold);
-    outline-offset: 3px;
-}
-
-.scheme-media {
-    position: relative;
-    display: block;
-    aspect-ratio: 16 / 10;
-    overflow: hidden;
-    background: var(--ink-warm);
-}
-
-.scheme-media img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.9s var(--ease-out);
-}
-
-.scheme-card:hover .scheme-media img {
-    transform: scale(1.05);
-}
-
+/* ===== 方案状态徽章 ===== */
 .scheme-badge {
     position: absolute;
     top: 12px;
     left: 12px;
+    z-index: 3;
     font-size: 11px;
     font-weight: 500;
     letter-spacing: 1px;
@@ -2455,81 +2425,13 @@ img.loaded {
     -webkit-backdrop-filter: blur(4px);
 }
 
-.scheme-badge-design {
-    color: var(--gold-light);
-}
-
 .scheme-badge-live {
     color: var(--paper);
     background: var(--gold);
     border-color: var(--gold);
 }
 
-.scheme-body {
-    display: block;
-    padding: 14px 16px 16px;
-}
-
-.scheme-title {
-    display: block;
-    font-family: var(--font-display);
-    font-size: 18px;
-    font-weight: 600;
-    color: var(--ink);
-    letter-spacing: 0.3px;
-}
-
-.scheme-loc {
-    display: block;
-    font-size: 12px;
-    color: var(--stone);
-    margin-top: 3px;
-    letter-spacing: 0.5px;
-}
-
-.scheme-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin-top: 10px;
-}
-
-.scheme-tags span {
-    font-size: 11px;
-    color: var(--gold-dark);
-    background: rgba(176, 141, 87, 0.1);
-    padding: 2px 8px;
-    border-radius: 3px;
-    letter-spacing: 0.5px;
-}
-
-.scheme-foot {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 12px;
-    font-size: 12px;
-    color: var(--stone);
-}
-
-.scheme-arrow {
-    color: var(--gold);
-    transition: transform 0.3s var(--ease-out);
-}
-
-.scheme-card:hover .scheme-arrow {
-    transform: translateX(4px);
-}
-
-.schemes-note {
-    margin-top: 28px;
-    font-size: 12px;
-    color: var(--mist);
-    text-align: center;
-    letter-spacing: 0.5px;
-}
-
-/* ===== 方案图集灯箱 ===== */
+/* ===== 图集灯箱 ===== */
 .lightbox {
     position: fixed;
     inset: 0;
@@ -2717,24 +2619,13 @@ body.lightbox-open {
     overflow: hidden;
 }
 
-@media (max-width: 1024px) {
-    .schemes-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
 @media (max-width: 768px) {
-    .schemes-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
+    .case-card.case-open .case-title {
+        font-size: 20px;
     }
 
-    .scheme-body {
-        padding: 12px 13px 14px;
-    }
-
-    .scheme-title {
-        font-size: 16px;
+    .case-card.case-open .case-info {
+        padding: 20px;
     }
 
     .lightbox {
@@ -2764,8 +2655,3 @@ body.lightbox-open {
     }
 }
 
-@media (max-width: 480px) {
-    .schemes-grid {
-        grid-template-columns: 1fr;
-    }
-}

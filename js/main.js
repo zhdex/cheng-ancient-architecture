@@ -180,54 +180,59 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // ===== 案例多图按钮切换（document 级事件委托，免疫绑定时序与缓存差异） =====
-    document.addEventListener('click', function (e) {
-        var btn = e.target.closest('.case-tabs button');
-        if (!btn || btn.classList.contains('active')) return;
-        var tabs = btn.closest('.case-tabs');
-        var card = btn.closest('.case-card');
-        if (!tabs || !card) return;
-        var btns = tabs.querySelectorAll('button');
-        var idx = Array.prototype.indexOf.call(btns, btn);
-        btns.forEach(function (b, i) {
-            b.classList.toggle('active', i === idx);
-            b.setAttribute('aria-pressed', i === idx ? 'true' : 'false');
-        });
-        var imgs = card.querySelectorAll('img');
-        imgs.forEach(function (img, i) {
-            img.classList.toggle('active', i === idx);
-        });
-    });
-
-    // 悬停/触摸到画廊卡片时，立即解除懒加载，把备用视角图提前拉下来
-    document.addEventListener('pointerover', function (e) {
-        var card = e.target.closest('.case-gallery');
-        if (!card || card.dataset.eager) return;
-        card.dataset.eager = '1';
-        card.querySelectorAll('img[loading]').forEach(function (img) {
-            img.loading = 'eager';
-        });
-    }, { passive: true });
-
-    // ===== 设计方案库 · 图集灯箱 =====
-    var SCHEME_DATA = {
-        '河池刘府': { title: '河池刘府', sub: '广西河池 · 江南中式 · 三进院落 800㎡', count: 6 },
-        '邵东贺府': { title: '邵东贺府', sub: '湖南邵东 · 现代中式 · 鱼池庭院', count: 6 },
-        '江西汪府': { title: '江西汪府', sub: '江西 · 徽派马头墙 · 天井院落', count: 8 },
-        '望城梁府': { title: '望城梁府', sub: '湖南望城 · 新中式 · 多层合院', count: 8 },
-        '四川李府': { title: '四川李府', sub: '四川 · 新中式合院 · 双进院落', count: 8 },
-        '浏阳王院': { title: '浏阳王院', sub: '湖南浏阳 · 苏式雅院 · 内廊合院', count: 8 },
-        '萍乡黎府': { title: '萍乡黎府', sub: '江西萍乡 · 苏式合院 · 庭院水景', count: 8 }
-    };
-
-    function schemeImgs(key, count) {
+    // ===== 案例图集灯箱 =====
+    function schemeImgs(key, count, extra) {
         var base = 'images/方案/' + key + '/';
         var list = [base + 'cover.jpg'];
         for (var i = 1; i < count; i++) {
             list.push(base + (i < 10 ? '0' + i : i) + '.jpg');
         }
-        return list;
+        return list.concat(extra || []);
     }
+
+    var SCHEME_DATA = {
+        '河池刘府': {
+            title: '河池刘府',
+            sub: '广西河池 · 江南中式 · 三进院落 800㎡',
+            imgs: schemeImgs('刘府', 6)
+        },
+        '邵东贺府': {
+            title: '邵东贺府',
+            sub: '湖南邵东 · 现代中式 · 鱼池庭院',
+            imgs: schemeImgs('贺府', 6, [
+                'images/case-湖南邵东贺府-门楼.jpg',
+                'images/case-湖南邵东贺府-立面.jpg'
+            ])
+        },
+        '江西汪府': {
+            title: '江西汪府',
+            sub: '江西 · 徽派马头墙 · 天井院落',
+            imgs: schemeImgs('汪府', 8, [
+                'images/case-江西汪府-车道.jpg',
+                'images/case-江西汪府-月洞门.jpg'
+            ])
+        },
+        '望城梁府': {
+            title: '望城梁府',
+            sub: '湖南望城 · 新中式 · 多层合院',
+            imgs: schemeImgs('梁府', 8, ['images/4望城梁府-鸟瞰.jpg'])
+        },
+        '四川李府': {
+            title: '四川李府',
+            sub: '四川 · 新中式合院 · 双进院落',
+            imgs: schemeImgs('四川李府', 8)
+        },
+        '浏阳王院': {
+            title: '浏阳王院',
+            sub: '湖南浏阳 · 苏式雅院 · 内廊合院',
+            imgs: schemeImgs('浏阳王院', 8)
+        },
+        '萍乡黎府': {
+            title: '萍乡黎府',
+            sub: '江西萍乡 · 苏式合院 · 庭院水景',
+            imgs: schemeImgs('萍乡黎府', 8)
+        }
+    };
 
     (function () {
         var lb = document.getElementById('lightbox');
@@ -261,7 +266,7 @@ document.addEventListener('DOMContentLoaded', function () {
         function open(key) {
             var data = SCHEME_DATA[key];
             if (!data) return;
-            imgs = schemeImgs(key, data.count);
+            imgs = data.imgs.slice();
             idx = 0;
             titleEl.textContent = data.title;
             subEl.textContent = data.sub;
